@@ -1,6 +1,3 @@
-#define CONFIG_CATCH_MAIN
-#include "catch.hpp"
-
 
 #include <iostream>
 #include <fstream>
@@ -8,32 +5,26 @@
 
 #include <cstring>
 #include <iomanip>
+
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
 using namespace std;
 
-int Charcount(string inputString);
-int LineCount(string inputString);
-/*
-TEST_CASE("test", "test")
-{
-    string st = "\n";
-    REQUIRE(LineCount(st) == 1);
+int countChar(string inputString);
+int countLine(string inputString);
 
 
-}
-*/
-
-
-
-int main()
+int main1(int argc, char * argv[])
 {
     ifstream t("test.txt");
     stringstream buffer;
     buffer << t.rdbuf();
-    
+   
     string tmp = buffer.str();
 
-    int numChars = Charcount(tmp);
-    int numLines = LineCount(tmp);
+    int numChars = countChar(tmp);
+    int numLines = countLine(tmp);
     cout << numChars << endl << numLines;
 
 
@@ -41,7 +32,7 @@ int main()
     return 0;
 }
 
-int Charcount(string inputString){
+int countChar(string inputString){
     int charCount = 0;
     int i = 0;
     char tmp2;
@@ -58,7 +49,7 @@ int Charcount(string inputString){
     }
     return charCount;
 }
-int LineCount(string inputString){
+int countLine(string inputString){
     int lineNum = 0;
     int i = 0;
     char tmp2;
@@ -76,3 +67,10 @@ int LineCount(string inputString){
 }
 
 
+TEST_CASE("test", "test")
+{
+    string st = "\n";
+    REQUIRE(countLine(st) == 1);
+
+
+}
