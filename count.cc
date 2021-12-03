@@ -1,4 +1,5 @@
-
+/// \file count.cc
+/// \brief This is the count.cc file for the Hands on Final portion of the exam
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,16 +7,18 @@
 #include <cstring>
 #include <iomanip>
 
-//#define CATCH_CONFIG_MAIN
-//#include "catch.hpp"
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 
 using namespace std;
 
 int countChar(string inputString);
 int countLine(string inputString);
 
-
-int main(int argc, char * argv[])
+/// \brief main function
+/// @param argc parameter to main
+/// @param argv parameter to main
+int main1(int argc, char * argv[])
 {
     
 
@@ -47,7 +50,8 @@ int main(int argc, char * argv[])
         
     return 0;
 }
-
+/// \brief function that takes an input string and counts the number of characters
+/// @param inputString The inputString we are counting
 int countChar(string inputString){
     int charCount = 0;
     int i = 0;
@@ -65,6 +69,8 @@ int countChar(string inputString){
     }
     return charCount;
 }
+/// \brief function that counts the lines in a given string
+/// @param inputString a string that we are counting how many new lines there are
 int countLine(string inputString){
     int lineNum = 0;
     int i = 0;
@@ -82,3 +88,14 @@ int countLine(string inputString){
     return lineNum + 1;
 }
 
+TEST_CASE("CountChar", "Char"){
+    string tmp1 = " ";
+    string tmp2 = "abc def ";
+    string tmp3 = "abc!123def";
+
+    REQUIRE(countChar(tmp1) == 0);
+    REQUIRE(countChar(tmp2) == 6);
+    REQUIRE(countChar(tmp3) == 6);
+
+
+}

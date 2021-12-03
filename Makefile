@@ -1,7 +1,13 @@
-all:	build	archive
+all:	build	archive	doc
 
 build:	count
 
+doc: 
+	doxygen
+
+cppcheck: 
+	cppcheck
+	
 count:	count.o
 
 count.o:	count.cc
